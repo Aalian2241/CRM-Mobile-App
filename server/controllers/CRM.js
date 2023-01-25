@@ -1,24 +1,16 @@
-import { response } from "express";
-import PostMessage from "../models/dataModel.js";
-// these can be used with axios to make api calls and they are the funcction names.
+import models from '../models/index.js';
+const { Lead } = models;
 
 
-export const getLeads = async (req, res) => {
-    Leads.findAll().then((users) => {
-    res.send(users);
-});
-};
-
-export const getActivity = async (req,res)=>{
+const getResults = async (req, res) => {
+    try {
    
-
-};
-
-export const getShipment= async(req, res) => {
-   
+        const data = await Lead.findAll();
+        console.log(JSON.stringify(data, null, 2));
+        
+    } catch (error) {
+        res.status(500).send({ error: 'Error fetching data from the database' });
+    }
 }
 
-export const getCargo= async(req, res) => {
-    
-}
-
+export default { getResults };
