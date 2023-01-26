@@ -84,11 +84,22 @@ const Cargo = sequelize.define('Cargo', {
         type: Sequelize.INTEGER,
         primaryKey: true,
         autoIncrement: true
-    }
+    },
+    LeadID: {
+        type: Sequelize.INTEGER,
+        allowNull: false,
+        references: {
+            model: 'Lead',
+            key: 'LeadID'
+        }
+    },
 }, {
     tableName:"Cargo",
     timestamps: true
 });
+Lead.hasMany(Activity, { foreignKey: 'LeadID' });
+Cargo.belongsTo(Cargo, { foreignKey: 'LeadID' });
+
 //-----------------------------------------------------------
 
 const CargoInsurance = sequelize.define('CargoInsurance', {
