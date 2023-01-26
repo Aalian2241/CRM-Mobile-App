@@ -15,6 +15,73 @@ const getLeads = async (req, res) => {
     }
 };
 
+//-----------------------------------------------------------------------------------------
+//-----------------------------------------------------------------------------------------
+
+const getActivity = async (req, res) => {
+    try {
+        const activity = await Activity.findAll();
+        res.status(200).send(JSON.stringify(activity,null,4));
+    } catch (err) {
+        console.log(err);
+        res.status(500).json({
+            success: false,
+            error: 'Server Error'
+        });
+    }
+};
+
+//-----------------------------------------------------------------------------------------
+//-----------------------------------------------------------------------------------------
+
+const getCargo = async (req, res) => {
+    try {
+        const cargo = await Cargo.findAll();
+        res.status(200).send(JSON.stringify(cargo,null,4));
+    } catch (err) {
+        console.log(err);
+        res.status(500).json({
+            success: false,
+            error: 'Server Error'
+        });
+    }
+};
+
+//-----------------------------------------------------------------------------------------
+//-----------------------------------------------------------------------------------------
+
+const getCargoInsurance = async (req, res) => {
+    try {
+        const cargoInsurance = await CargoInsurance.findAll();
+        res.status(200).send(JSON.stringify(cargoInsurance,null,4));
+    } catch (err) {
+        console.log(err);
+        res.status(500).json({
+            success: false,
+            error: 'Server Error'
+        });
+    }
+};
+
+//-----------------------------------------------------------------------------------------
+//-----------------------------------------------------------------------------------------
+
+const getDangerousGoods = async (req, res) => {
+    try {
+        const dangerousGoods = await DangerousGoods.findAll();
+        res.status(200).send(JSON.stringify(dangerousGoods,null,4));
+    } catch (err) {
+        console.log(err);
+        res.status(500).json({
+            success: false,
+            error: 'Server Error'
+        });
+    }
+};
+
+//-----------------------------------------------------------------------------------------
+//-----------------------------------------------------------------------------------------
+
 
 const createLead = async (req, res) => {
     try {
@@ -25,6 +92,8 @@ const createLead = async (req, res) => {
         return res.status(500).json({ error: err.message });
     }
 };
+//-----------------------------------------------------------------------------------------
+//-----------------------------------------------------------------------------------------
 
 const getLeadIDByLeadNo = async (req, res) => {
     try {
@@ -53,6 +122,9 @@ const getLeadIDByLeadNo = async (req, res) => {
     }
 };
 
+//-----------------------------------------------------------------------------------------
+//-----------------------------------------------------------------------------------------
+
 const createShipment = async (req, res) => {
     try {
         const { ServiceType, LoadType, ScopeOfService, POD, PODZipcode, POL, POLZipcode, Remarks, LeadID } = req.body;
@@ -71,6 +143,9 @@ const createShipment = async (req, res) => {
         });
     }
 };
+
+//-----------------------------------------------------------------------------------------
+//-----------------------------------------------------------------------------------------
 
 const createActivity = async (req, res) => {
     try {
@@ -91,6 +166,9 @@ const createActivity = async (req, res) => {
     }
 };
 
+//-----------------------------------------------------------------------------------------
+//-----------------------------------------------------------------------------------------
+
 const createCargo = async (req, res) => {
     try {
         const {  LeadID} = req.body;
@@ -110,7 +188,9 @@ const createCargo = async (req, res) => {
     }
 };
 
-//--------------------------------
+//-----------------------------------------------------------------------------------------
+//-----------------------------------------------------------------------------------------
+
 const createCargoInsurance = async (req, res) => {
     try {
         const { Amount, Currency, CargoID } = req.body;
@@ -129,6 +209,10 @@ const createCargoInsurance = async (req, res) => {
         });
     }
 };
+
+//-----------------------------------------------------------------------------------------
+//-----------------------------------------------------------------------------------------
+
 const createDangerousGoods = async (req, res) => {
     try {
         const { Class, IMGLink, MSDS, CargoID} = req.body;
@@ -147,7 +231,14 @@ const createDangerousGoods = async (req, res) => {
         });
     }
 };
-//--------------------------------
 
-//----------------------------------
-export default { getLeadIDByLeadNo, cr };
+//-----------------------------------------------------------------------------------------
+//-----------------------------------------------------------------------------------------
+
+
+export default {
+    getLeadIDByLeadNo, createLead, getLeads, createShipment, createActivity, 
+    createCargo, 
+    createCargoInsurance, 
+    createDangerousGoods
+};
