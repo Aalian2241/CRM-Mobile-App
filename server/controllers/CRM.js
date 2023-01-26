@@ -150,4 +150,4 @@ const createDangerousGoods = async (req, res) => {
 //--------------------------------
 
 //----------------------------------
-export default { getLeads };
+export default { getLeadIDByLeadNo, cr };
