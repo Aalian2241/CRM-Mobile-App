@@ -5,12 +5,15 @@ const router = express.Router();
 
 // GETTER ROUTES
 router.get('/leads/:LeadNo/LeadID', controller.getLeadIDByLeadNo); //http://localhost:3000/leads/12345/LeadID
+router.get('/leads/:LeadID/activities', controller.getActivitiesByLeadID);
+
 router.get('/leads', controller.getLeads);
 router.get('/activity', controller.getActivity);
 router.get('/shipment', controller.getShipment);
 router.get('/cargo', controller.getCargo);
 router.get('/cargoInsurance', controller.getCargoInsurance);
 router.get('/dangerousGoods', controller.getDangerousGoods);
+
 
 // SETTER ROUTES
 router.post('/leads', controller.createLead);

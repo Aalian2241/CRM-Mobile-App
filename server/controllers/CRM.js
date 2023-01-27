@@ -1,5 +1,5 @@
 import models from '../models/index.js';
-const { Lead,Activity,Cargo,CargoInsurance,DangerousGoods } = models;
+const { Lead,Activity,Cargo,CargoInsurance,DangerousGoods, Shipment } = models;
 
 
 const getLeads = async (req, res) => {
@@ -15,83 +15,6 @@ const getLeads = async (req, res) => {
     }
 };
 
-//-----------------------------------------------------------------------------------------
-//-----------------------------------------------------------------------------------------
-
-const getActivity = async (req, res) => {
-    try {
-        const activity = await Activity.findAll();
-        res.status(200).send(JSON.stringify(activity,null,4));
-    } catch (err) {
-        console.log(err);
-        res.status(500).json({
-            success: false,
-            error: 'Server Error'
-        });
-    }
-};
-
-//-----------------------------------------------------------------------------------------
-//-----------------------------------------------------------------------------------------
-
-const getCargo = async (req, res) => {
-    try {
-        const cargo = await Cargo.findAll();
-        res.status(200).send(JSON.stringify(cargo,null,4));
-    } catch (err) {
-        console.log(err);
-        res.status(500).json({
-            success: false,
-            error: 'Server Error'
-        });
-    }
-};
-
-//-----------------------------------------------------------------------------------------
-//-----------------------------------------------------------------------------------------
-
-const getCargoInsurance = async (req, res) => {
-    try {
-        const cargoInsurance = await CargoInsurance.findAll();
-        res.status(200).send(JSON.stringify(cargoInsurance,null,4));
-    } catch (err) {
-        console.log(err);
-        res.status(500).json({
-            success: false,
-            error: 'Server Error'
-        });
-    }
-};
-
-//-----------------------------------------------------------------------------------------
-//-----------------------------------------------------------------------------------------
-
-const getDangerousGoods = async (req, res) => {
-    try {
-        const dangerousGoods = await DangerousGoods.findAll();
-        res.status(200).send(JSON.stringify(dangerousGoods,null,4));
-    } catch (err) {
-        console.log(err);
-        res.status(500).json({
-            success: false,
-            error: 'Server Error'
-        });
-    }
-};
-
-//-----------------------------------------------------------------------------------------
-//-----------------------------------------------------------------------------------------
-
-
-const createLead = async (req, res) => {
-    try {
-        const { LeadNo, CustomerName, DateCreated, Status } = req.body;
-        const lead = await Lead.create({ LeadNo, CustomerName, DateCreated, Status });
-        return res.status(201).json(lead);
-    } catch (err) {
-        return res.status(500).json({ error: err.message });
-    }
-};
 //-----------------------------------------------------------------------------------------
 //-----------------------------------------------------------------------------------------
 
@@ -122,6 +45,221 @@ const getLeadIDByLeadNo = async (req, res) => {
     }
 };
 
+//-----------------------------------------------------------------------------------------
+//-----------------------------------------------------------------------------------------
+
+const getActivity = async (req, res) => {
+    try {
+        const activity = await Activity.findAll();
+        res.status(200).send(JSON.stringify(activity,null,4));
+    } catch (err) {
+        console.log(err);
+        res.status(500).json({
+            success: false,
+            error: 'Server Error'
+        });
+    }
+};
+
+const getActivitiesByLeadID = async (req, res) => {
+    try {
+        const { LeadID } = req.params;
+        const activities = await Activity.findAll({ where: { LeadID } });
+        if (!activities) {
+            return res.status(404).json({
+                success: false,
+                error: 'Activities not found'
+            });
+        }
+        res.status(200).json({
+            success: true,
+            data: activities
+        });
+    } catch (err) {
+        console.log(err);
+        res.status(500).json({
+            success: false,
+            error: 'Server Error'
+        });
+    }
+};
+
+
+//-----------------------------------------------------------------------------------------
+const getShipment = async (req, res) => {
+    try {
+        const shipment = await Shipment.findAll();
+        res.status(200).send(JSON.stringify(shipment,null,4));
+    } catch (err) {
+        console.log(err);
+        res.status(500).json({
+            success: false,
+            error: 'Server Error'
+        });
+    }
+};
+
+const getShipmentByLeadID = async (req, res) => {
+    try {
+        const { LeadID } = req.params;
+
+        // Find the Shipment record with the matching LeadID
+        const shipment = await Shipment.findOne({ where: { LeadID } });
+        if (!shipment) {
+            return res.status(404).json({
+                success: false,
+                error: 'Shipment not found'
+            });
+        }
+
+        // Return the shipment record
+        res.status(200).json({
+            success: true,
+            data: shipment
+        });
+    } catch (err) {
+        console.log(err);
+        res.status(500).json({
+            success: false,
+            error: 'Server Error'
+        });
+    }
+};
+
+//-----------------------------------------------------------------------------------------
+
+const getCargo = async (req, res) => {
+    try {
+        const cargo = await Cargo.findAll();
+        res.status(200).send(JSON.stringify(cargo,null,4));
+    } catch (err) {
+        console.log(err);
+        res.status(500).json({
+            success: false,
+            error: 'Server Error'
+        });
+    }
+};
+const getCargoByLeadID = async (req, res) => {
+    try {
+        const { LeadID } = req.params;
+
+        // Find the Cargo records with the matching LeadID
+        const cargo = await Cargo.findAll({ where: { LeadID } });
+        if (!cargo) {
+            return res.status(404).json({
+                success: false,
+                error: 'Cargo not found'
+            });
+        }
+
+        // Return all the Cargo records with the matching LeadID
+        res.status(200).json({
+            success: true,
+            data: cargo
+        });
+    } catch (err) {
+        console.log(err);
+        res.status(500).json({
+            success: false,
+            error: 'Server Error'
+        });
+    }
+};
+
+//-----------------------------------------------------------------------------------------
+//-----------------------------------------------------------------------------------------
+
+const getCargoInsurance = async (req, res) => {
+    try {
+        const cargoInsurance = await CargoInsurance.findAll();
+        res.status(200).send(JSON.stringify(cargoInsurance,null,4));
+    } catch (err) {
+        console.log(err);
+        res.status(500).json({
+            success: false,
+            error: 'Server Error'
+        });
+    }
+};
+const getCargoInsuranceByCargoID = async (req, res) => {
+    try {
+        const { cargoID } = req.params;
+
+        // Find the CargoInsurance record with the matching cargoID
+        const cargoInsurance = await CargoInsurance.findOne({ where: { cargoID } });
+        if (!cargoInsurance) {
+            return res.status(404).json({
+                success: false,
+                error: 'CargoInsurance not found'
+            });
+        }
+
+        // Return the CargoInsurance record
+        res.status(200).json({
+            success: true,
+            data: cargoInsurance
+        });
+    } catch (err) {
+        console.log(err);
+        res.status(500).json({
+            success: false,
+            error: 'Server Error'
+        });
+    }
+};
+
+//-----------------------------------------------------------------------------------------
+//-----------------------------------------------------------------------------------------
+
+const getDangerousGoods = async (req, res) => {
+    try {
+        const dangerousGoods = await DangerousGoods.findAll();
+        res.status(200).send(JSON.stringify(dangerousGoods,null,4));
+    } catch (err) {
+        console.log(err);
+        res.status(500).json({
+            success: false,
+            error: 'Server Error'
+        });
+    }
+};
+const getDangerousGoodsByCargoID = async (req, res) => {
+    try {
+        const { CargoID } = req.params;
+        const dangerousGoods = await DangerousGoods.findAll({ where: { CargoID } });
+        if (!dangerousGoods) {
+            return res.status(404).json({
+            success: false,
+            error: 'Dangerous goods not found'
+            });
+        }
+        res.status(200).json({
+        success: true,
+        data: dangerousGoods
+    });
+    } 
+    catch (err) {
+        console.log(err);
+        res.status(500).json({
+        success: false,
+        error: 'Server Error'
+        });
+        }
+    };
+//-----------------------------------------------------------------------------------------
+//-----------------------------------------------------------------------------------------
+
+
+const createLead = async (req, res) => {
+    try {
+        const { LeadNo, CustomerName, DateCreated, Status } = req.body;
+        const lead = await Lead.create({ LeadNo, CustomerName, DateCreated, Status });
+        return res.status(201).json(lead);
+    } catch (err) {
+        return res.status(500).json({ error: err.message });
+    }
+};
 //-----------------------------------------------------------------------------------------
 //-----------------------------------------------------------------------------------------
 
