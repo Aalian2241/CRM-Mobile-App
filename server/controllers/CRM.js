@@ -378,5 +378,10 @@ export default {
     getLeadIDByLeadNo, createLead, getLeads, createShipment, createActivity, 
     createCargo, 
     createCargoInsurance, 
-    createDangerousGoods
+    createDangerousGoods,
+    getActivitiesByLeadID,
+    getCargoByLeadID,getCargoInsuranceByCargoID,
+    getLeadIDByLeadNo,getShipmentByLeadID,
+    getShipment, getActivity, getDangerousGoods, getCargoInsurance, getCargo
+
 };

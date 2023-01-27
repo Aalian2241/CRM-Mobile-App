@@ -12,6 +12,10 @@ const Lead = sequelize.define('Lead', {
         allowNull: false,
         unique: true
     },
+    DateCreated:{
+        type: Sequelize.TEXT,
+        allowNull:true
+    },
     CustomerName: {
         type: Sequelize.TEXT,
         allowNull: false

@@ -1,19 +1,28 @@
 import express from 'express';
-import controller from '../controller/index.js';
+import controller from '../controllers/CRM.js';
 
 const router = express.Router();
 
 // GETTER ROUTES
 router.get('/leads/:LeadNo/LeadID', controller.getLeadIDByLeadNo); //http://localhost:3000/leads/12345/LeadID
-router.get('/leads/:LeadID/activities', controller.getActivitiesByLeadID);
-
 router.get('/leads', controller.getLeads);
-router.get('/activity', controller.getActivity);
-router.get('/shipment', controller.getShipment);
-router.get('/cargo', controller.getCargo);
-router.get('/cargoInsurance', controller.getCargoInsurance);
-router.get('/dangerousGoods', controller.getDangerousGoods);
 
+router.get('/activity', controller.getActivity);
+router.get('/activity/:LeadID', controller.getActivitiesByLeadID);
+
+router.get('/shipment', controller.getShipment);
+router.get('/shipment/:LeadID', controller.getShipmentByLeadID);
+
+router.get('/cargo', controller.getCargo);
+router.get('/cargo/:LeadID', controller.getCargoByLeadID);
+
+
+router.get('/cargoInsurance', controller.getCargoInsurance);
+router.get('/cargoInsurance/:cargoID', controller.getCargoInsuranceByCargoID);
+
+router.get('/dangerousGoods', controller.getDangerousGoods);
+router.get('/cargo/:LeadID/cargo', controller.getCargoByLeadID);
+ 
 
 // SETTER ROUTES
 router.post('/leads', controller.createLead);
