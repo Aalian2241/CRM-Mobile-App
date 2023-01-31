@@ -15,12 +15,12 @@ sequelize
     console.error('Unable to connect to the database:', err);
   });
 
-sequelize.sync({force: true})
-  .then(() => {
-    console.log('All models were synchronized successfully.');
-  })
-  .catch(err => {
-    console.error('An error occurred: ', err);
-  });
+// sequelize.sync({force: true})
+//   .then(() => {
+//     console.log('All models were synchronized successfully.');
+//   })
+//   .catch(err => {
+//     console.error('An error occurred: ', err);
+//   });
 
 export default sequelize;

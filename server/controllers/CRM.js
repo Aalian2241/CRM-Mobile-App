@@ -253,6 +253,7 @@ const getDangerousGoodsByCargoID = async (req, res) => {
 
 const createLead = async (req, res) => {
     try {
+        console.log(req.body)
         const { LeadNo, CustomerName, DateCreated, Status } = req.body;
         const lead = await Lead.create({ LeadNo, CustomerName, DateCreated, Status });
         return res.status(201).json(lead);
