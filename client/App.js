@@ -1,10 +1,11 @@
 import { StatusBar } from 'expo-status-bar';
-import { KeyboardAvoidingView, StyleSheet, Text, View } from 'react-native';
+import {  KeyboardAvoidingView, StyleSheet, Text, View } from 'react-native';
 import {store} from "./store";
 import { NavigationContainer, StackActions } from '@react-navigation/native';
 import { createStackNavigator } from '@react-navigation/stack';
 import HomePage from './screens/HomePage';
 import { Provider } from 'react-redux';
+import { SafeAreaProvider } from 'react-native-safe-area-context';
 export default function App() {
   const Stack = createStackNavigator();
   return (
