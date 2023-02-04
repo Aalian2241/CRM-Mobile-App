@@ -4,14 +4,16 @@ import { SafeAreaView } from 'react-native-safe-area-context'
 import tw from "twrnc";
 const HomePage = () => {
   return (
-    <SafeAreaView style={tw`bg-white h-full`}>
-      <View>
-        <Text style={tw`text-center`}>HomePage</Text>
-      </View>
-      
-    </SafeAreaView>
-  )
-}
+    <View style={tw`bg-gray-700 flex-1`}>
+      <SafeAreaView style={tw`flex-1`}>
+        <View style={tw`w-85 ml-2.5 h-11.5 bg-green-700 rounded-md`}>
+          {/* Your content */}
+        </View>
+      </SafeAreaView>
+    </View>
+  );
+};
+
 
 export default HomePage
 
