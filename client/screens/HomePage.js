@@ -22,46 +22,7 @@ const HomePage = () => {
         <SafeAreaView style={tw`flex-1`}>
           <View style={tw`h-11.5 bg-green-700 rounded-md`} />
         </SafeAreaView>
-        <View style={tw`bg-white h-12`}>
-          <HStack row center spacing={20} style={tw`justify-around `}>
-            <Menu
-              visible={visible1}
-              onDismiss={closeMenu1}
-              anchor={
-                <Button 
-                  style={tw`w-30`}
-                  onPress={openMenu1}
-                >
-                  Leads
-                </Button>
-              }
-            >
-              <Menu.Item onPress={() => {}} title="Create a Lead" />
-              <Menu.Item onPress={() => {}} title="Manage Leads" />
-              <Divider />
-            </Menu>
-            <IconButton  
-              style={tw`flex-1 bg-white rounded-md`} 
-              icon={props => <Icon name="home-outline" {...props} />} 
-            />
-            <Menu
-              visible={visible2}
-              onDismiss={closeMenu2}
-              anchor={
-                <Button 
-                  style={tw`w-30`}
-                  onPress={openMenu2}
-                >
-                  Quotes
-                </Button>
-              }
-            >
-              <Menu.Item onPress={() => {}} title="Create a Quote" />
-              <Menu.Item onPress={() => {}} title="Manage Quotes" />
-              <Divider />
-            </Menu>
-          </HStack>
-        </View>
+        
       </View>
     </Provider>
   );
