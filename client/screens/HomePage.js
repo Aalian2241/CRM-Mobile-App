@@ -1,45 +1,42 @@
+import { Ionicons } from '@expo/vector-icons';
+import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
 import React, { useState, useEffect } from 'react';
 import { View, Text, TextInput, Modal, FlatList, TouchableOpacity, StyleSheet } from 'react-native';
+import LandingPageLead from './Lead/landingPageLead';
+import LandingPageQuote from './Quote/landingPageQuote';
 
 const SearchScreen = () => {
-  const [query, setQuery] = useState('');
-  const [searchResults, setSearchResults] = useState([]);
-  const [showResults, setShowResults] = useState(false);
-
-  const handleSearch = text => {
-    setQuery(text);
-    // make API call to fetch search results based on the query
-  };
-
-  const renderItem = ({ item }) => (
-    <TouchableOpacity style={styles.resultItem} onPress={() => {
-      // navigate to the desired screen based on the selected item
-      setShowResults(false);
-    }}>
-      <Text>{item.ActivityID}</Text>
-    </TouchableOpacity>
-  );
+  const Tab = createBottomTabNavigator();
 
   return (
-    <View style={styles.container}>
-      <TextInput
-        style={styles.input}
-        placeholder="Search"
-        value={query}
-        onChangeText={handleSearch}
-      />
-      <Modal
-        animationType="slide"
-        transparent={false}
-        visible={showResults}
+    <Tab.Navigator 
+        
+        screenOptions={({ route }) => ({
+          tabBarIcon: ({ focused, color, size }) => {
+            let iconName;
+
+            if (route.name === 'Home') {
+              iconName = focused
+                ? 'home-outline'
+                : 'home-outline';
+            } else if (route.name === 'Quotes') {
+              iconName = focused ? 'clipboard' : 'clipboard-outline';
+            }
+            else if (route.name === 'Leads') {
+              iconName = focused ? 'book' : 'book-outline';
+            }
+
+            // You can return any component that you like here!
+            return <Ionicons name={iconName} size={size} color={color} />;
+          },
+          tabBarActiveTintColor: 'green',
+          tabBarInactiveTintColor: 'gray',
+        })}
       >
-        <FlatList
-          data={searchResults}
-          renderItem={renderItem}
-          keyExtractor={item => item.ActivityID.toString()}
-        />
-      </Modal>
-    </View>
+        {/* <Tab.Screen name="Home" component={HomePage} options={{headerShown:false}}/> */}
+        <Tab.Screen name="Quotes" component={LandingPageQuote} options={{headerShown:false}} />
+        <Tab.Screen name="Leads" component={LandingPageLead} options={{headerShown:false}} />
+      </Tab.Navigator>
   );
 };
 

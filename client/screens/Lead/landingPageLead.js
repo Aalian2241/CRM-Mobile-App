@@ -2,13 +2,16 @@ import { Pressable, StyleSheet, Text, View } from 'react-native'
 import React from 'react'
 import { SafeAreaView } from 'react-native-safe-area-context'
 import tw from "twrnc";
-import { Button } from 'react-native-elements';
 import { createMaterialTopTabNavigator } from '@react-navigation/material-top-tabs';
 import AddLead from '../Lead/addLead/addLead';
 import { useNavigation } from '@react-navigation/native';
 import ManageLead from './manageLead/manageLead';
+import LeadAdded from "./tabs/leadAdded/LeadAdded"
+import Followup from "./tabs/followup/Followup"
+import NotQualified from "./tabs/notQualified/NotQualified"
+import Qualified from "./tabs/qualified/Qualified"
 
-const LandingPageQuote = () => {
+const LandingPageLead = () => {
   const Tab = createMaterialTopTabNavigator();
   const navigation = useNavigation();
   return (
@@ -32,8 +35,10 @@ const LandingPageQuote = () => {
       </View>
       <View style={tw`bg-black h-full`}>
         <Tab.Navigator>
-          <Tab.Screen name="ManageLead" component={ManageLead}/>
-          <Tab.Screen name="AddLead" component={AddLead}/>
+          <Tab.Screen name="Lead Added" component={LeadAdded}/>
+          <Tab.Screen name="Followup" component={Followup}/>
+          <Tab.Screen name="Not Qualified" component={NotQualified}/>
+          <Tab.Screen name="Qualified" component={Qualified}/>
         </Tab.Navigator>
       </View>
       
@@ -41,6 +46,6 @@ const LandingPageQuote = () => {
   )
 }
 
-export default LandingPageQuote
+export default LandingPageLead
 
 const styles = StyleSheet.create({})
