@@ -1,31 +1,63 @@
-import React from 'react';
-import { SafeAreaView } from 'react-native-safe-area-context'
-import { View, Image, TouchableOpacity} from 'react-native';
-import FastImage from 'react-native-fast-image';
-import {Menu, Divider, Provider, Button } from 'react-native-paper';
-import tw  from "twrnc";
-import { HStack, IconButton } from "@react-native-material/core";
-import Icon from "@expo/vector-icons/MaterialCommunityIcons";
+import React, { useState, useEffect } from 'react';
+import { View, Text, TextInput, Modal, FlatList, TouchableOpacity, StyleSheet } from 'react-native';
 
-const HomePage = () => {
-  const [visible1, setVisible1] = React.useState(false);
-  const [visible2, setVisible2] = React.useState(false);
-  const openMenu1 = () => setVisible1(true);
-  const closeMenu1 = () => setVisible1(false);
+const SearchScreen = () => {
+  const [query, setQuery] = useState('');
+  const [searchResults, setSearchResults] = useState([]);
+  const [showResults, setShowResults] = useState(false);
 
-  const openMenu2 = () => setVisible2(true);
-  const closeMenu2 = () => setVisible2(false);   
+  const handleSearch = text => {
+    setQuery(text);
+    // make API call to fetch search results based on the query
+  };
+
+  const renderItem = ({ item }) => (
+    <TouchableOpacity style={styles.resultItem} onPress={() => {
+      // navigate to the desired screen based on the selected item
+      setShowResults(false);
+    }}>
+      <Text>{item.ActivityID}</Text>
+    </TouchableOpacity>
+  );
 
   return (
-    <Provider>
-      <View style={tw`bg-gray-700 flex-1`}>
-        <SafeAreaView style={tw`flex-1`}>
-          <View style={tw`h-11.5 bg-green-700 rounded-md`} />
-        </SafeAreaView>
-        
-      </View>
-    </Provider>
+    <View style={styles.container}>
+      <TextInput
+        style={styles.input}
+        placeholder="Search"
+        value={query}
+        onChangeText={handleSearch}
+      />
+      <Modal
+        animationType="slide"
+        transparent={false}
+        visible={showResults}
+      >
+        <FlatList
+          data={searchResults}
+          renderItem={renderItem}
+          keyExtractor={item => item.ActivityID.toString()}
+        />
+      </Modal>
+    </View>
   );
 };
 
-export default HomePage;
+const styles = StyleSheet.create({
+  container: {
+    flex: 1,
+    alignItems: 'center',
+    
+  },
+  input: {
+    width: '80%',
+    height: 40,
+    borderWidth: 1,
+    padding: 10
+  },
+  resultItem: {
+    padding: 10
+  }
+});
+
+export default SearchScreen;
