@@ -15,12 +15,12 @@ const LandingPageLead = () => {
   const Tab = createMaterialTopTabNavigator();
   const navigation = useNavigation();
   return (
-    <SafeAreaView style={tw`flex`}>
-      <View style={tw`flex-row  justify-between h-12 bg-gray-600 pt-.5`}>
-        <View style={tw`justify-center pl-2`}>
+    <View style={tw`flex`}>
+      <View style={tw`flex-row  justify-between h-19 bg-green-700 pt-.5`}>
+        <View style={tw`justify-end pl-2 pb-2`}>
             <Text style={tw`text-white font-light text-3xl`}>Leads</Text>
         </View>
-        <View style={tw`justify-center pr-1`}>
+        <View style={tw`justify-end pr-1 pb-2`}>
         <Pressable 
         onPress={()=>navigation.navigate("AddLead")}
         style={({pressed}) => [
@@ -42,7 +42,7 @@ const LandingPageLead = () => {
         </Tab.Navigator>
       </View>
       
-    </SafeAreaView>
+    </View>
   )
 }
 

@@ -18,13 +18,9 @@ export default function App() {
   const Stack = createStackNavigator();
 
   return (
-    <View style={tw`justify-between flex-1`}>
+    <View style={tw`flex-1`}>
 
-      <View style={tw`bg-gray-400 h-20`}>
-        <SafeAreaView style={tw`pt-1`}>
-          <TopBar/>
-        </SafeAreaView>
-      </View>
+     
     <NavigationContainer style={tw``}>
       <Stack.Navigator>
         <Stack.Screen name="HomePage" component={HomePage} options={{headerShown:false}}  />
