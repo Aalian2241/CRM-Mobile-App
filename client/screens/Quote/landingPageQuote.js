@@ -34,7 +34,11 @@ const LandingPageQuote = () => {
         </View>
       </View>
       <View style={tw`bg-black h-full`}>
-        <Tab.Navigator>
+        <Tab.Navigator
+        screenOptions={{
+          tabBarLabelStyle: { fontSize: 11, width:100 },tabBarItemStyle: {  },}}
+        >
+        
           <Tab.Screen name="Added" component={Added}/>
           <Tab.Screen name="Proposal Sent" component={ProposalSent}/>
           <Tab.Screen name="Followed-Up" component={FollowedUp}/>
