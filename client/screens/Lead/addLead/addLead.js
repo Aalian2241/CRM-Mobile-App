@@ -83,10 +83,10 @@ const AddLead = () => {
             <SelectStatus/>
           </View>
         </View>
-          <View>
-            <CustomerAutoComplete/>
-          </View>
-               </View>
+            <View>
+              <CustomerAutoComplete/>
+            </View>
+        </View>
       </View>
     </ScrollView>
   )
