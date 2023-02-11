@@ -46,7 +46,7 @@ const CustomerAutoComplete = () => {
     <View style={tw`flex-row justify-between`}>
       <View style={tw`w-76`}>
         <TextInput
-          style={tw`h-10 pl-2 border border-1 text-lg`}
+          style={tw`h-10 pl-2 border border-1 text-lg bg-white`}
           value={resultValue || searchTerm}
           onChangeText={handleTextInput}
           placeholder="Customer Name"

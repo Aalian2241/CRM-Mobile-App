@@ -8,13 +8,27 @@ import { useNavigation } from '@react-navigation/native';
 import DateTimePicker from '@react-native-community/datetimepicker';
 import { Button } from 'react-native-elements';
 import CustomerAutoComplete from '../../../components/customerAutoComplete/CustomerAutoComplete';
+
+import PrimaryDropDown from "../../../components/dropDownPickers/primaryDropDown";
 import SelectStatus from "../../../components/dropDownPickers/SelectStatus"
+import Component2 from "../../../components/CargoComponents/component2/Component2"
+import CargoType1 from '../../../components/CargoCompTypes/Type1/CargoType1';
+import CargoType3 from '../../../components/CargoCompTypes/Type3/CargoType3';
+import CargoType2 from '../../../components/CargoCompTypes/Type2/CargoType2';
 const items = [
   "apple", "banana", "cherry", "date", "elderberry",
   "fig", "grape", "honeydew", "kiwi", "lemon",
   "mango", "nectarine", "orange", "peach", "quince",
   "raspberry", "strawberry", "tangerine", "ugli fruit", "vanilla"
 ];
+const status=[
+  {label: 'Select Status', value: 'select status'},
+  {label: 'Approved', value: 'approved'},
+  {label: 'Rejected', value: 'rejected'},
+  {label: 'Open', value: 'open'},
+  {label: 'Closed', value: 'closed'},
+  {label: 'Cancelled', value: 'cancelled'}
+]
 const AddLead = () => {
   const navigation = useNavigation();
   const [date, setDate] = useState(new Date());
@@ -31,16 +45,10 @@ const AddLead = () => {
   };
   const [open, setOpen] = useState(false);
   const [value, setValue] = useState(null);
-  const [items, setItems] = useState([
-    {label: 'Approved', value: 'approved'},
-    {label: 'Rejected', value: 'rejected'},
-    {label: 'Open', value: 'open'},
-    {label: 'Closed', value: 'closed'},
-    {label: 'Cancelled', value: 'cancelled'}
-  ]);
+  const [items, setItems] = useState(status);
 
   return (
-    <ScrollView style={tw`bg-white h-full `}>
+    <ScrollView style={tw`bg-gray-600 h-full `}>
       <View >
        <SafeAreaView style={tw`flex-row justify-between items-center h-19 bg-green-700 pt-.5`}>
           <TouchableOpacity
@@ -80,11 +88,18 @@ const AddLead = () => {
           </View>
           
           <View style={tw`h-10 pr-0.5`}>
-            <SelectStatus/>
+            <PrimaryDropDown propItems={status} title="Select Status"/>
           </View>
         </View>
             <View>
               <CustomerAutoComplete/>
+            </View>
+            <View style={tw` pt-3`}>
+              <Text style={tw`text-4xl font-extrabold text-white`}>CARGO</Text>
+              <View style={tw`bg-gray-400`}>
+                <CargoType1/>
+              </View>
+              
             </View>
         </View>
       </View>
