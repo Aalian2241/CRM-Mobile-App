@@ -61,7 +61,7 @@ const AddLead = () => {
 
       </SafeAreaView>
       
-      <View style={tw`pl-1.5`}>
+      <View style={tw`pl-1.5 pr-1`}>
         <View style={tw`flex-row justify-between items-center`}>
           <View style={tw`h-11 pt-0.5 `}>
           <Pressable 
@@ -97,7 +97,7 @@ const AddLead = () => {
             <View style={tw` pt-3`}>
               <Text style={tw`text-4xl font-extrabold text-white`}>CARGO</Text>
               <View style={tw`bg-gray-400`}>
-                <CargoType1/>
+                <CargoType2/>
               </View>
               
             </View>

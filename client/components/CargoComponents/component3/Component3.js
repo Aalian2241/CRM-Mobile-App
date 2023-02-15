@@ -1,10 +1,19 @@
 import { StyleSheet, Text, View } from 'react-native'
 import React from 'react'
-
+import ToggleButton from '../component7/ToggleButton'
+import tw from "twrnc"
+import Component7 from '../component7/Component7'
+import Dimensions_box from './Dimensions'
 const Component3 = () => {
   return (
-    <View>
-      <Text>Component3</Text>
+    <View style={tw`flex `}>
+      <View style={tw`p-1`}>
+        <Dimensions_box textLabel="Dimensions" display={<Text>asdasd</Text>}/>
+      </View>
+      <View style={tw`p-1`}>
+        <ToggleButton textLabel="Stackable Packages" display={<></>}/>
+      </View>
+      
     </View>
   )
 }

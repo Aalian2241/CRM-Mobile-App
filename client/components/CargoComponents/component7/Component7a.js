@@ -17,7 +17,7 @@ const DropDown = ({propItems, title}) => {
     return (
       <View style={tw` pt-1`}>
           <View style={tw``}>
-              <TouchableOpacity style={tw`bg-gray-300 rounded-md `} onPress={() => setOpen(true)}>
+              <TouchableOpacity style={tw`bg-gray-100 rounded-md `} onPress={() => setOpen(true)}>
                   <View style={tw`h-7 w-17 flex-row  items-center`}>
                   <Text style={tw`text-base text-center w-14 `}>
                       {value ? items.find(item => item.value === value).label : title}
@@ -67,7 +67,7 @@ const DropDown = ({propItems, title}) => {
 const Component7a = () => {
 
   return (
-    <View style={tw`items-center pt-1 pb-1`}>      
+    <View style={tw`items-center bg-gray-300 pt-1 pb-1`}>      
       <DropDown propItems={temps} title="Class"/>
     </View>
   )

@@ -11,7 +11,7 @@ const PrimaryDropDown = ({propItems, title}) => {
   return (
     <View style={tw``}>
         <View style={tw``}>
-            <TouchableOpacity style={tw`bg-gray-300 rounded-md `} onPress={() => setOpen(true)}>
+            <TouchableOpacity style={tw`bg-gray-100 rounded-md `} onPress={() => setOpen(true)}>
                 <View style={tw`h-9.6 w-37 flex-row justify-between items-center`}>
                 <Text style={tw`text-lg text-center w-30`}>
                     {value ? items.find(item => item.value === value).label : title}
