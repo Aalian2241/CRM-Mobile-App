@@ -18,11 +18,11 @@ const DropDown = ({propItems, title}) => {
       <View style={tw` pt-1`}>
           <View style={tw``}>
               <TouchableOpacity style={tw`bg-gray-100 rounded-md `} onPress={() => setOpen(true)}>
-                  <View style={tw`h-7 w-17 flex-row  items-center`}>
+                  <View style={tw`h-7 w-20 flex-row  items-center`}>
                   <Text style={tw`text-base text-center w-14 `}>
                       {value ? items.find(item => item.value === value).label : title}
                   </Text>
-                  <Ionicons style={tw`pr-1`} name ="chevron-down-outline" size={12}/>
+                  <Ionicons style={tw`pl-2`} name ="chevron-down-outline" size={12}/>
                   </View>
               </TouchableOpacity>
           </View>
@@ -45,7 +45,7 @@ const DropDown = ({propItems, title}) => {
                   }}
                 >
                   <View style={tw`flex-row items-center justify-between border border-slate-500`}>
-                    <Text style={tw`text-5xl font-light m-3`}>{item.label}</Text>
+                    <Text style={tw`text-5xl font-light m-3 w-50`}>{item.label}</Text>
                     <View
                       style={[
                         tw`rounded-full h-6 w-6 mr-1`,
@@ -64,36 +64,34 @@ const DropDown = ({propItems, title}) => {
     );
   };
   
-const Component4 = () => {
+const Dimensions = () => {
 
   return (
+    
     <View style={tw`items-start flex-row pl-2 bg-gray-300 pt-1 pb-1`}>
         
         <View style={tw` pt-0.2 pb-1 pr-1`}>        
-          <DropDown propItems={temps} title="Commodity"/>
-        </View>
-        <View style={tw` pt-0.2 pb-1 pr-1`}>        
-          <DropDown propItems={temps} title="Package"/>
+          <DropDown propItems={temps} title="Unit"/>
         </View>
         
         <View style={tw` pt-0.2 pb-1 `}>        
-          <TextInput placeholder='Qty'  style={tw`border-b ml-1 text-center  rounded-md h-10 w-10 bg-white`} value="" />
+          <TextInput placeholder='Length'  style={tw`border-b ml-1 text-center  rounded-md h-10 w-10 bg-white`} value="" />
 
         </View>
         <View style={tw` pt-0.2 pb-1 `}>        
-          <TextInput placeholder='CBM'  style={tw`border-b ml-1 text-center  rounded-md h-10 w-10 bg-white`} value="" />
+          <TextInput placeholder='Width'  style={tw`border-b ml-1 text-center  rounded-md h-10 w-10 bg-white`} value="" />
         </View>
         <View style={tw` pt-0.2 pb-1 `}>        
-          <TextInput placeholder='Gross Wt.'  style={tw`border-b ml-1 text-center  rounded-md h-10 w-10 bg-white`} value="" />
+          <TextInput placeholder='Height'  style={tw`border-b ml-1 text-center  rounded-md h-10 w-10 bg-white`} value="" />
         </View>
         <View style={tw` pt-0.2 pb-1 `}>        
-          <TextInput placeholder='Chg Wt.'  style={tw`border-b ml-1 text-center  rounded-md h-10 w-10 bg-white`} value="" />
+          <TextInput placeholder='Vol Height'  style={tw`border-b ml-1 text-center  rounded-md h-10 w-10 bg-white`} value="" />
         </View>
     </View> 
   )
 }
 
-export default Component4
+export default Dimensions
 
 const styles = StyleSheet.create({
     button: {

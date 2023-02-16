@@ -7,9 +7,7 @@ import Dimensions_box from './Dimensions'
 const Component3 = () => {
   return (
     <View style={tw`flex `}>
-      <View style={tw`p-1`}>
-        <Dimensions_box textLabel="Dimensions" display={<Text>asdasd</Text>}/>
-      </View>
+      
       <View style={tw`p-1`}>
         <ToggleButton textLabel="Stackable Packages" display={<></>}/>
       </View>

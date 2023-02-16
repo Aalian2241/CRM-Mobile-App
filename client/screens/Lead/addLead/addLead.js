@@ -15,6 +15,7 @@ import Component2 from "../../../components/CargoComponents/component2/Component
 import CargoType1 from '../../../components/CargoCompTypes/Type1/CargoType1';
 import CargoType3 from '../../../components/CargoCompTypes/Type3/CargoType3';
 import CargoType2 from '../../../components/CargoCompTypes/Type2/CargoType2';
+import Shipment from '../../../components/ShipmentComponents/Shipment';
 const items = [
   "apple", "banana", "cherry", "date", "elderberry",
   "fig", "grape", "honeydew", "kiwi", "lemon",
@@ -93,6 +94,13 @@ const AddLead = () => {
         </View>
             <View>
               <CustomerAutoComplete/>
+            </View>
+            <View style={tw` pt-3`}>
+              <Text style={tw`text-4xl font-extrabold text-white`}>SHIPMENT</Text>
+              <View style={tw`bg-gray-400`}>
+                <Shipment/>
+              </View>
+              
             </View>
             <View style={tw` pt-3`}>
               <Text style={tw`text-4xl font-extrabold text-white`}>CARGO</Text>
