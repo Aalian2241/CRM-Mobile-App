@@ -17,7 +17,7 @@ const Component2 = () => {
   return (
     <View style={tw`flex-row justify-between bg-gray-400 h-12 items-center pr-2 rounded-md`}>
       <View style={tw`flex-row pl-1`}>
-        <PrimaryDropDown propItems={items} title="Container Type"/>
+        <PrimaryDropDown slice='shipment' propItems={items} title="Container Type"/>
         <TextInput placeholder='Qty.'  style={tw`border-b ml-4 text-center  rounded-md h-10 w-18 bg-white`} value={value} onChangeText={text => setValue(text)}/>
       </View>
       

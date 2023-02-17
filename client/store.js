@@ -3,6 +3,6 @@ import navReducer from "./slices/slice";
 
 export const store = configureStore({
     reducer:{
-        nav: navReducer,
+        crm: navReducer,
     },
 });

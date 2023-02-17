@@ -1,10 +1,14 @@
 import { Ionicons } from "@expo/vector-icons";
 import { useState } from "react";
 import { View, Modal, TouchableOpacity, Text, Button, Pressable, StyleSheet } from "react-native";
+import {setServiceType, setLoadType, setScopeOfService, setIncoTerms, setCargoType, setStatus} from "../../slices/slice.js"
+import { useDispatch } from "react-redux";
 import tw from "twrnc";
 
-const PrimaryDropDown = ({propItems, title}) => {
+
+const PrimaryDropDown = ({propItems,slice, title}) => {
   const [open, setOpen] = useState(false);
+  const dispatch = useDispatch();
   const [value, setValue] = useState(null);
   const [items, setItems] = useState(propItems);
 
@@ -33,6 +37,9 @@ const PrimaryDropDown = ({propItems, title}) => {
             <TouchableOpacity
               key={item.value}
               onPress={() => {
+                if(slice=="Status"){
+                  dispatch(setStatus(item.value))
+                }
                 setValue(item.value);
                 setOpen(false);
               }}

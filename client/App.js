@@ -18,6 +18,7 @@ export default function App() {
   const Stack = createStackNavigator();
 
   return (
+    <Provider store={store}>
     <View style={tw`flex-1`}>
 
      
@@ -28,7 +29,7 @@ export default function App() {
       </Stack.Navigator>
     </NavigationContainer>
     </View>
-    
+    </Provider>
   );
 }
 

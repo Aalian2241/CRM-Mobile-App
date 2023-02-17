@@ -16,13 +16,15 @@ import CargoType1 from '../../../components/CargoCompTypes/Type1/CargoType1';
 import CargoType3 from '../../../components/CargoCompTypes/Type3/CargoType3';
 import CargoType2 from '../../../components/CargoCompTypes/Type2/CargoType2';
 import Shipment from '../../../components/ShipmentComponents/Shipment';
+import { selectDate, selectIncoTerms, selectServiceType, selectStatus, setCurrentDate } from '../../../slices/slice';
+import { useDispatch, useSelector } from 'react-redux';
 const items = [
   "apple", "banana", "cherry", "date", "elderberry",
   "fig", "grape", "honeydew", "kiwi", "lemon",
   "mango", "nectarine", "orange", "peach", "quince",
   "raspberry", "strawberry", "tangerine", "ugli fruit", "vanilla"
 ];
-const status=[
+const ST=[
   {label: 'Select Status', value: 'select status'},
   {label: 'Approved', value: 'approved'},
   {label: 'Rejected', value: 'rejected'},
@@ -30,7 +32,10 @@ const status=[
   {label: 'Closed', value: 'closed'},
   {label: 'Cancelled', value: 'cancelled'}
 ]
-const AddLead = () => {
+const AddLead = () => { 
+  const dispatch = useDispatch()
+
+
   const navigation = useNavigation();
   const [date, setDate] = useState(new Date());
   const [show, setShow] = useState(false);
@@ -38,15 +43,18 @@ const AddLead = () => {
   const [searchTerm, setSearchTerm] = useState("");
   const [results, setResults] = useState([]);
 
-  console.log(date)
   const onChange = (event, selectedDate) => {
     const currentDate = selectedDate || date;
     setShow(false);
     setDate(currentDate);
+    
+    
+    const action = setCurrentDate(currentDate.toISOString());
+    dispatch(action);
   };
   const [open, setOpen] = useState(false);
   const [value, setValue] = useState(null);
-  const [items, setItems] = useState(status);
+  const [items, setItems] = useState(ST);
 
   return (
     <ScrollView style={tw`bg-gray-600 h-full `}>
@@ -89,7 +97,7 @@ const AddLead = () => {
           </View>
           
           <View style={tw`h-10 pr-0.5`}>
-            <PrimaryDropDown propItems={status} title="Select Status"/>
+            <PrimaryDropDown slice="Status" propItems={ST} title="Select Status"/>
           </View>
         </View>
             <View>
