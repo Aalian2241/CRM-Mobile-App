@@ -1,14 +1,14 @@
 import { StyleSheet, Text, View } from 'react-native'
 import React from 'react'
 
-const Component2 = () => {
+const ShipComp1 = () => {
   return (
     <View>
-      <Text>Component2</Text>
+      <Text>ShipComp1</Text>
     </View>
   )
 }
 
-export default Component2
+export default ShipComp1
 
 const styles = StyleSheet.create({})

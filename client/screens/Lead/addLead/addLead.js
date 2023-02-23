@@ -100,7 +100,7 @@ const AddLead = () => {
             <PrimaryDropDown slice="Status" propItems={ST} title="Select Status"/>
           </View>
         </View>
-            <View>
+            <View style={tw`pt-2`}>
               <CustomerAutoComplete/>
             </View>
             <View style={tw` pt-3`}>

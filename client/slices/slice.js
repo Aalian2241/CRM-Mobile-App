@@ -3,6 +3,7 @@ import { createSlice, miniSerializeError } from '@reduxjs/toolkit'
 
 const initialState = { 
     status:null,
+    loadCategory:null,
     serviceType:null,
     loadType:null,
     scopeOfService:null,
@@ -18,6 +19,9 @@ export const navslice = createSlice({
   reducers: {
     setServiceType: (state, action)=> {
       state.serviceType= action.payload;
+    },
+    setLoadCategory: (state, action)=> {
+      state.loadCategory= action.payload;
     },
     setCurrentDate: (state, action)=> {
       state.date= action.payload.toISOString();
@@ -41,12 +45,13 @@ export const navslice = createSlice({
 });
 
 // sending the data layer
-export const { setServiceType, setLoadType, setScopeOfService, setIncoTerms, setCargoType, setStatus, setCurrentDate } = navslice.actions
+export const { setServiceType, setLoadType, setScopeOfService, setIncoTerms, setCargoType, setStatus, setCurrentDate, setLoadCategory } = navslice.actions
   
 // grabbing the data layer: SELECTORS
 
 export const selectServiceType = (state) =>state.crm.serviceType
 export const selectLoadType = (state) =>state.crm.loadType
+export const selectloadCategory = (state) =>state.crm.loadCategory
 export const selectScopeOfService = (state) =>state.crm.scopeOfService
 export const selectIncoTerms = (state) =>state.crm.incoTerms
 export const selectCargoType = (state) =>state.crm.cargoType
